@@ -142,8 +142,8 @@ start_build_process() {
     
     echo "Patch frameroks_native..."
     cd frameworks/native
-    wget https://raw.githubusercontent.com/aoi-itsme/crave_script/refs/heads/main/patch/001-temp-fix-camera.patch
-    wget https://raw.githubusercontent.com/aoi-itsme/crave_script/refs/heads/main/patch/002-temp-fix-camera.patch
+    wget https://raw.githubusercontent.com/aoitsme/crave_script/refs/heads/main/patch/001-temp-fix-camera.patch
+    wget https://raw.githubusercontent.com/aoitsme/crave_script/refs/heads/main/patch/002-temp-fix-camera.patch
     git am 001-temp-fix-camera.patch
     git am 002-temp-fix-camera.patch
     cd -
