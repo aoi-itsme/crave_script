@@ -136,10 +136,6 @@ start_build_process() {
     fi
     repo sync
 
-    echo "Replacing some repository..."
-    rm -rf hardware/interfaces
-    git clone https://github.com/aoitsme/axion_hardware_interfaces -b lineage-23.2 --depth=1 hardware/interfaces
-    
     echo "Patch frameroks_native..."
     cd frameworks/native
     wget https://raw.githubusercontent.com/aoitsme/crave_script/refs/heads/main/patch/001-temp-fix-camera.patch
