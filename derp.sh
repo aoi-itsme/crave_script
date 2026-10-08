@@ -115,8 +115,6 @@ start_build_process() {
     
     echo "Removing local changes..."
     rm -rf .repo/local_manifests
-    rm -rf kernel/configs
-    rm -rf hardware/interfaces
     rm -rf frameworks/native
     rm -rf kernel/sony
     rm -rf device/sony
@@ -138,12 +136,6 @@ start_build_process() {
     else
       repo sync
     fi
-    
-    echo "Replacing some repository..."
-    rm -rf kernel/configs
-    rm -rf hardware/interfaces
-    git clone https://github.com/crdroidandroid/android_kernel_configs -b 16.0 --depth=1 kernel/configs
-    git clone https://github.com/crdroidandroid/android_hardware_interfaces -b 16.0 --depth=1 hardware/interfaces
 
     echo "Patch frameroks_native..."
     cd frameworks/native
@@ -154,9 +146,9 @@ start_build_process() {
     cd -
 
     echo "Cloning device trees..."
-    git clone https://github.com/aoi-itsme/android_kernel_sony_sdm845 -b bpf --depth=1 kernel/sony/sdm845
+    git clone https://github.com/aoi-itsme/android_kernel_sony_sdm845 -b retrofit --depth=1 kernel/sony/sdm845
     git clone https://github.com/aoi-itsme/android_device_sony_"$DEVICE_CODE" -b lineage-23.2 --depth=1 device/sony/"$DEVICE_CODE"
-    git clone https://github.com/aoi-itsme/android_device_sony_tama-common -b derp --depth=1 device/sony/tama-common
+    git clone https://github.com/aoi-itsme/android_device_sony_tama-common -b derp-16.2 --depth=1 device/sony/tama-common
     git clone https://github.com/aoi-itsme/android_hardware_sony_SonyOpenTelephony -b lineage-23.2 --depth=1 hardware/sony/SonyOpenTelephony
     git clone https://github.com/aoi-itsme/proprietary_vendor_sony_"$DEVICE_CODE" -b lineage-23.2 --depth=1 vendor/sony/"$DEVICE_CODE"
     git clone https://github.com/aoi-itsme/proprietary_vendor_sony_tama-common -b lineage-23.2 --depth=1 vendor/sony/tama-common
