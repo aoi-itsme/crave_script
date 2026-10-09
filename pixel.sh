@@ -115,7 +115,6 @@ start_build_process() {
     
     echo "Removing local changes..."
     rm -rf .repo/local_manifests
-    rm -rf packages/providers/ContactsProvider
     rm -rf frameworks/native
     rm -rf kernel/sony
     rm -rf device/sony
@@ -137,13 +136,6 @@ start_build_process() {
     else
       repo sync
     fi
-
-    echo "Replace some repo..."
-    rm -rf packages/providers/ContactsProvider
-    git clone https://github.com/LineageOS/android_packages_providers_ContactsProvider -b lineage-23.2 packages/providers/ContactsProvider
-    cd packages/providers/ContactsProvider
-    git reset --hard 59be632a60c69882bf5f772e31b2a60ca68dc483
-    cd -
 
     echo "Patch frameroks_native..."
     cd frameworks/native
