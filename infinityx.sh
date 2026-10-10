@@ -7,7 +7,7 @@
 TG_BOT_TOKEN=$(echo "ODE1MzkzMzk3NjpBQUduZHRpdE5CZUJja2Uyc2pLa0g1R1JWMjdyWVNzRTF6OA==" | base64 -d)
 TG_CHAT_ID=$(echo "LTEwMDI0NzY1OTcwNTY=" | base64 -d)
 DEVICE_CODE="unknown"
-BUILD_TARGET="PixelOS"
+BUILD_TARGET="LineageOS"
 ANDROID_VERSION="16"
 
 # Setup Timezone
@@ -120,7 +120,6 @@ start_build_process() {
     rm -rf device/sony
     rm -rf hardware/sony
     rm -rf vendor/sony
-    rm -rf vendor/lineage
     rm -rf vendor/lineage-priv
 
     echo "Set github account.."
@@ -128,14 +127,14 @@ start_build_process() {
     git config --global user.email "aoitsme01@gmail.com"
 
     echo "Initializing repo..."
-    repo init -u https://github.com/PixelOS-AOSP/android_manifest.git -b sixteen-qpr2 --git-lfs --depth=1
+    repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest -b 16 -g default,-mips,-darwin,-notdefault
 
     echo "Syncing sources..."
     if [ -f /opt/crave/resync.sh ]; then
       /opt/crave/resync.sh
-    else
-      repo sync
     fi
+    repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync
+
 
     echo "Patch frameroks_native..."
     cd frameworks/native
@@ -147,18 +146,16 @@ start_build_process() {
 
     echo "Cloning device trees..."
     git clone https://github.com/aoi-itsme/android_kernel_sony_sdm845 -b retrofit --depth=1 kernel/sony/sdm845
-    git clone https://github.com/aoi-itsme/android_device_sony_"$DEVICE_CODE" -b pixel-16.2 --depth=1 device/sony/"$DEVICE_CODE"
-    git clone https://github.com/aoi-itsme/android_device_sony_tama-common -b pixel-16.2 --depth=1 device/sony/tama-common
+    git clone https://github.com/aoi-itsme/android_device_sony_"$DEVICE_CODE" -b infinityx-16.2 --depth=1 device/sony/"$DEVICE_CODE"
+    git clone https://github.com/aoi-itsme/android_device_sony_tama-common -b lineage-23.2 --depth=1 device/sony/tama-common
     git clone https://github.com/aoi-itsme/android_hardware_sony_SonyOpenTelephony -b lineage-23.2 --depth=1 hardware/sony/SonyOpenTelephony
     git clone https://github.com/aoi-itsme/proprietary_vendor_sony_"$DEVICE_CODE" -b lineage-23.2 --depth=1 vendor/sony/"$DEVICE_CODE"
     git clone https://github.com/aoi-itsme/proprietary_vendor_sony_tama-common -b lineage-23.2 --depth=1 vendor/sony/tama-common
     git clone https://github.com/aoi-itsme/keys -b new --depth=1 vendor/lineage-priv
     
     echo "Starting ROM build..."
-    . build/envsetup.sh
-    export WITH_GMS=true
-    lunch lineage_"$DEVICE_CODE"-bp4a-userdebug
-    m pixelos
+    lunch infinity_"$DEVICE_CODE"-userdebug
+    m bacon
 
     BUILD_STATUS=${PIPESTATUS[0]}
 

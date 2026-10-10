@@ -20,6 +20,16 @@ crave run --no-patch -- "curl -fsSL https://raw.githubusercontent.com/aoi-itsme/
 crave run --no-patch -- "curl -fsSL https://raw.githubusercontent.com/aoi-itsme/crave_script/refs/heads/main/derp.sh | bash -s -- --codename"
 ```
 
+<b> - Evox A16 </b>
+```
+crave run --no-patch -- "curl -fsSL https://raw.githubusercontent.com/aoi-itsme/crave_script/refs/heads/main/evox.sh | bash -s -- --codename"
+```
+
+<b> - InfinityX A16 </b>
+```
+crave run --no-patch -- "curl -fsSL https://raw.githubusercontent.com/aoi-itsme/crave_script/refs/heads/main/infinityx.sh | bash -s -- --codename"
+```
+
 <b> - LineageOS A16 </b>
 ```
 crave run --no-patch -- "curl -fsSL https://raw.githubusercontent.com/aoi-itsme/crave_script/refs/heads/main/lineage.sh | bash -s -- --codename"
