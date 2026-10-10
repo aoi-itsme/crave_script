@@ -157,7 +157,7 @@ start_build_process() {
     echo "Starting ROM build..."
     . build/envsetup.sh
     export WITH_GMS=true
-    lunch lineage_"$DEVICE_CODE"-bp4a-userdebug
+    lunch custom_"$DEVICE_CODE"-bp4a-userdebug
     m pixelos
 
     BUILD_STATUS=${PIPESTATUS[0]}
