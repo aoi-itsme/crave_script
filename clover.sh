@@ -163,6 +163,7 @@ start_build_process() {
     
     echo "Starting ROM build..."
     . build/envsetup.sh
+    export WITH_GMS=false
     lunch clover_"$DEVICE_CODE"-bp4a-userdebug
     mka clover
 
