@@ -153,6 +153,7 @@ start_build_process() {
     git clone https://github.com/aoi-itsme/keys -b new vendor/lineage-priv
     
     echo "Starting ROM build..."
+    . build/envsetup.sh
     lunch infinity_"$DEVICE_CODE"-userdebug
     m bacon
 
