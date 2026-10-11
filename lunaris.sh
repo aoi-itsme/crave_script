@@ -154,7 +154,10 @@ start_build_process() {
     
     echo "Starting ROM build..."
     . build/envsetup.sh
-    export WITH_GMS=false
+    export WITH_GMS=true
+    export WITH_GMS_COMMS_SUITE=true
+    export WITH_PIXEL_LAUNCHER=false
+    export TARGET_USE_FILES=true
     export TARGET_EXCLUDE_MATLOG=true
     lunch lineage_"$DEVICE_CODE"-bp4a-userdebug
     m bacon -j$(nproc --all)
