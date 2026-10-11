@@ -35,3 +35,7 @@ crave run --no-patch -- "curl -fsSL https://raw.githubusercontent.com/aoi-itsme/
 crave run --no-patch -- "curl -fsSL https://raw.githubusercontent.com/aoi-itsme/crave_script/refs/heads/main/lineage.sh | bash -s -- --codename"
 ```
 
+<b> - LunarisAOSP A16 </b>
+```
+crave run --no-patch -- "curl -fsSL https://raw.githubusercontent.com/aoi-itsme/crave_script/refs/heads/main/lunaris.sh | bash -s -- --codename"
+```
