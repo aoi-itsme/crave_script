@@ -115,7 +115,6 @@ start_build_process() {
     
     echo "Removing local changes..."
     rm -rf .repo/local_manifests
-    rm -rf hardware/interfaces
     rm -rf frameworks/native
     rm -rf kernel/sony
     rm -rf device/sony

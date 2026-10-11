@@ -135,7 +135,6 @@ start_build_process() {
     fi
     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync
 
-
     echo "Patch frameroks_native..."
     cd frameworks/native
     wget https://raw.githubusercontent.com/aoi-itsme/crave_script/refs/heads/main/patch/001-temp-fix-camera.patch

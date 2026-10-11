@@ -137,7 +137,7 @@ start_build_process() {
       repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune
     fi
 
-    cho "Replace some repo..."
+    echo "Replace some repo..."
     rm -rf packages/providers/ContactsProvider
     git clone https://github.com/LineageOS/android_packages_providers_ContactsProvider -b lineage-23.2 packages/providers/ContactsProvider
     cd packages/providers/ContactsProvider
