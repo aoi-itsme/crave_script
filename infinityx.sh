@@ -154,6 +154,7 @@ start_build_process() {
     
     echo "Starting ROM build..."
     . build/envsetup.sh
+    export WITH_GMS=true
     lunch infinity_"$DEVICE_CODE"-userdebug
     m bacon
 
