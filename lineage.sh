@@ -154,6 +154,7 @@ start_build_process() {
     
     echo "Starting ROM build..."
     . build/envsetup.sh
+    export TARGEET_IS_DOCOMO=true
     brunch "$DEVICE_CODE"
 
     BUILD_STATUS=${PIPESTATUS[0]}
